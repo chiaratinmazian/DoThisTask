@@ -1,7 +1,7 @@
-<h1>My lists of tasks</h1>
+<h1><%= Time.now.strftime("%d of %B, %Y") %></h1>
 
 <% @lists.each do |list| %>
-<%= list.title %>
+<%= link_to list.title, list_path(list) %>
 <% end %>
 
 <%= link_to 'Add a new list', new_list_path %>

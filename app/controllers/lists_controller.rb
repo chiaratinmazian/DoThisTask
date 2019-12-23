@@ -3,6 +3,10 @@ class ListsController < ApplicationController
     @lists = current_user.lists
   end
 
+  def show
+    @list = List.find(params[:id])
+  end
+
   def new
     @list = List.new
     @list.user = current_user
