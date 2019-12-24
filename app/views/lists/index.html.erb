@@ -1,8 +1,12 @@
 <h1><%= Time.now.strftime("%d of %B, %Y") %></h1>
 
 <% @lists.each do |list| %>
-<%= link_to list.title, list_path(list) %>
+<ul>
+  <li><%= link_to "delete", list_path(list), method: :delete %><%= link_to list.title, list_tasks_path(list) %></li>
+</ul>
 <% end %>
 
-<%= link_to 'Add a new list', new_list_path %>
+
+<%= render 'form' %>
+
 

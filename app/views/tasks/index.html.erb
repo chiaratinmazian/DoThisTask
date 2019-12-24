@@ -1,0 +1,10 @@
+<h1><%= @list.title %></h1>
+
+<p><% @tasks.each do |task| %></p>
+<% if task.state == 'pending' %>
+<ul><li><%= link_to "delete", list_task_path(@list, task), method: :delete %><%= task.content %></li></ul>
+<% end %>
+<% end %>
+
+<%= render 'form' %>
+<%= link_to 'Go back to the lists', lists_path %>
