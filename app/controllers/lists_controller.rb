@@ -1,13 +1,6 @@
 class ListsController < ApplicationController
   def index
     @lists = current_user.lists
-  end
-
-  def show
-    @list = List.find(params[:id])
-  end
-
-  def new
     @list = List.new
     @list.user = current_user
   end
@@ -18,8 +11,14 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to lists_path
     else
-      render :new
+      flash.now[:notice] = "Your list couldn't be saved, please try again"
     end
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to lists_path
   end
 
   private
