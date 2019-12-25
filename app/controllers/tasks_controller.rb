@@ -32,6 +32,7 @@ class TasksController < ApplicationController
         if pending.empty?
           @list.update(completed: true, completed_at: Time.now)
           flash.now[:notice] = "Congratulations, you successfully completed all of the tasks' list !"
+          UserMailer.with(user: current_user, list: @list).congrats.deliver_now
           redirect_to list_tasks_path(@list)
         end
     else
