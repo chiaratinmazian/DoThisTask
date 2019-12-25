@@ -27,7 +27,13 @@ class TasksController < ApplicationController
     @task.state = 'done'
     if @task.save
       flash.now[:notice] = "Your task was completed"
-      redirect_to list_tasks_path(@list)
+      @list = @task.list
+      pending = @list.tasks.reject { |task|  task.state == 'done'}
+        if pending.empty?
+          @list.update(completed: true, completed_at: Time.now)
+          flash.now[:notice] = "Congratulations, you successfully completed all of the tasks' list !"
+          redirect_to list_tasks_path(@list)
+        end
     else
       flash.now[:notice] = "Your task cannot be completed"
     end

@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="date">
-    <h1><%= Time.now.strftime("%d of %B, %Y") %></h1>
+  <div class="archives">
+    <h2>My archives</h2>
   </div>
   <div>
     <% @lists.each do |list| %>
@@ -8,12 +8,5 @@
       <li class="list"><%= link_to list.title, list_tasks_path(list) %> <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, list_path(list), method: :delete %></li>
     </ul>
     <% end %>
-  </div>
-  <div class="form-list">
-  <%= render 'form' %>
-  </div>
-  <div class="archives">
-    <%= link_to 'My archives', archives_path %>
-  </div>
+  <%= link_to 'Back to my lists', lists_path %>
 </div>
-

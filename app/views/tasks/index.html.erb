@@ -1,6 +1,9 @@
 <div class="container">
   <div class="title">
     <h1><%= @list.title %></h1>
+    <% unless @list.completed_at.nil? %>
+    <h3>Completed on the: <%= @list.completed_at.strftime("%d of %B, %Y") %></h3>
+    <% end %>
   </div>
   <div>
     <p><% @tasks.each do |task| %></p>

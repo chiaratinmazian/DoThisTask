@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   def index
-    @lists = current_user.lists
+    @lists = current_user.lists.where(completed: false)
     @list = List.new
     @list.user = current_user
   end
@@ -19,6 +19,10 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list.destroy
     redirect_to lists_path
+  end
+
+  def archives
+    @lists = current_user.lists.where(completed: true)
   end
 
   private
