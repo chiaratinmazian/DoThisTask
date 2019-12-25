@@ -22,6 +22,17 @@ class TasksController < ApplicationController
     redirect_to list_tasks_path(@list)
   end
 
+  def complete
+    @task = Task.find(params[:id])
+    @task.state = 'done'
+    if @task.save
+      flash.now[:notice] = "Your task was completed"
+      redirect_to list_tasks_path(@list)
+    else
+      flash.now[:notice] = "Your task cannot be completed"
+    end
+  end
+
   private
 
   def set_list
