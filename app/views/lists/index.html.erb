@@ -5,7 +5,7 @@
   <div>
     <% @lists.each do |list| %>
     <ul>
-      <li class="list"><%= link_to list.title, list_tasks_path(list) %> <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, list_path(list), method: :delete %></li>
+      <li class="list"><%= link_to list.title, list_tasks_path(list) %> <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, list_path(list), method: :delete, data: { confirm: "Are you sure?" } %></li>
     </ul>
     <% end %>
   </div>
