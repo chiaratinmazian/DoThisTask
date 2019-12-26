@@ -33,8 +33,8 @@ class TasksController < ApplicationController
           @list.update(completed: true, completed_at: Time.now)
           flash.now[:notice] = "Congratulations, you successfully completed all of the tasks' list !"
           UserMailer.with(user: current_user, list: @list).congrats.deliver_now
-          redirect_to list_tasks_path(@list)
         end
+      redirect_to list_tasks_path(@list)
     else
       flash.now[:notice] = "Your task cannot be completed"
     end
