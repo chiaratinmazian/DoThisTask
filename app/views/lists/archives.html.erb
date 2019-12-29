@@ -1,12 +1,24 @@
 <div class="container">
-  <div class="archives">
-    <h2>My archives</h2>
+  <div class="date text-center">
+    <h2><strong>My archives</strong></h2>
   </div>
-  <div>
-    <% @lists.each do |list| %>
-    <ul>
-      <li class="list"><%= link_to list.title, list_tasks_path(list) %> <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, list_path(list), method: :delete %></li>
-    </ul>
-    <% end %>
-  <%= link_to 'Back to my lists', lists_path %>
+
+  <div class="lists">
+    <div class="row"></p>
+      <% @lists.each do |list| %>
+        <%= link_to list_tasks_path(list), style: "text-decoration:none" do %>
+          <div class="list-item col-12 col-md-6 col-lg-3">
+            <div class="list text-center rounded">
+              <p class="list-title"><strong><%= list.title %></strong>
+              <p class="list-delete"><%= link_to '<i class="fas fa-times"></i>'.html_safe, list_path(list), method: :delete, data: { confirm: "Are you sure?" }, style: "color:grey" %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="archives text-center">
+    <p class="text-btn"><strong><%= link_to 'Back to my lists', lists_path, class: "btn-archives" %></strong></p>
+  </div>
 </div>
