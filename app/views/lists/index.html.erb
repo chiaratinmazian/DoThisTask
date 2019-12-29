@@ -1,19 +1,19 @@
 <div class="container">
 
   <div class="date text-center">
-    <h1><strong><%= Time.now.strftime("%d of %B, %Y") %></strong></h1>
+    <h1><strong><%= Time.now.strftime("%dth of %B, %Y") %></strong></h1>
   </div>
 
   <div class="lists">
     <div class="row">
       <% @lists.each do |list| %>
           <%= link_to list_tasks_path(list), style: "text-decoration:none" do %>
-                <div class="list-item col-12 col-md-6 col-lg-3">
-                  <div class="list text-center rounded">
-                    <p class="list-title"><strong><%= list.title %></strong></p>
-                    <p class="list-delete"><%= link_to '<i class="fas fa-times"></i>'.html_safe, list_path(list), method: :delete, data: { confirm: "Are you sure?" }, style: "color:grey" %></p>
-                  </div>
-                </div>
+            <div class="list-item col-12 col-md-6 col-lg-3">
+              <div class="list text-center rounded">
+                <p class="list-title"><strong><%= list.title %></strong></p>
+                <p class="list-delete"><%= link_to '<i class="fas fa-times"></i>'.html_safe, list_path(list), method: :delete, data: { confirm: "Are you sure?" }, style: "color:grey" %></p>
+              </div>
+            </div>
           <% end %>
       <% end %>
     </div>
