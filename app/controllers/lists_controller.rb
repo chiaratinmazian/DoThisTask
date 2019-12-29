@@ -11,7 +11,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to lists_path
     else
-      flash.now[:notice] = "Your list couldn't be saved, please try again"
+      flash[:notice] = "Your list couldn't be saved, please try again"
     end
   end
 

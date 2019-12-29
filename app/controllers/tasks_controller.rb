@@ -12,7 +12,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to list_tasks_path(@list)
     else
-      flash.now[:notice] = "Your task couldn't be saved, please try again"
+      flash.now[:alert] = "Your task couldn't be saved, please try again"
     end
   end
 
@@ -26,17 +26,17 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.state = 'done'
     if @task.save
-      flash.now[:notice] = "Your task was completed"
+      flash.now[:alert] = "Your task was completed"
       @list = @task.list
       pending = @list.tasks.reject { |task|  task.state == 'done'}
         if pending.empty?
           @list.update(completed: true, completed_at: Time.now)
-          flash.now[:notice] = "Congratulations, you successfully completed all of the tasks' list !"
+          flash.now[:alert] = "Congratulations, you successfully completed all of the tasks' list !"
           UserMailer.with(user: current_user, list: @list).congrats.deliver_now
         end
       redirect_to list_tasks_path(@list)
     else
-      flash.now[:notice] = "Your task cannot be completed"
+      flash.now[:alert] = "Your task cannot be completed"
     end
   end
 

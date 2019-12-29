@@ -1,19 +1,30 @@
 <div class="container">
-  <div class="date">
-    <h1><%= Time.now.strftime("%d of %B, %Y") %></h1>
+
+  <div class="date text-center">
+    <h1><strong><%= Time.now.strftime("%d of %B, %Y") %></strong></h1>
   </div>
-  <div>
-    <% @lists.each do |list| %>
-    <ul>
-      <li class="list"><%= link_to list.title, list_tasks_path(list) %> <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, list_path(list), method: :delete, data: { confirm: "Are you sure?" } %></li>
-    </ul>
-    <% end %>
+
+  <div class="lists">
+    <div class="row">
+      <% @lists.each do |list| %>
+          <%= link_to list_tasks_path(list), style: "text-decoration:none" do %>
+                <div class="list-item col-12 col-md-6 col-lg-3">
+                  <div class="list text-center rounded">
+                    <p class="list-title"><strong><%= list.title %></strong></p>
+                    <p class="list-delete"><%= link_to '<i class="fas fa-times"></i>'.html_safe, list_path(list), method: :delete, data: { confirm: "Are you sure?" }, style: "color:grey" %></p>
+                  </div>
+                </div>
+          <% end %>
+      <% end %>
+    </div>
   </div>
-  <div class="form-list">
-  <%= render 'form' %>
+
+  <div class="add">
+    <%= render 'form' %>
   </div>
-  <div class="archives">
-    <%= link_to 'My archives', archives_path %>
+
+  <div class="archives text-center">
+    <p class="text-btn"><strong><%= link_to 'My archives', archives_path, class: "btn-archives" %></strong></p>
   </div>
 </div>
 
