@@ -3,6 +3,9 @@
   <div class="list-add">
     <%= f.input_field :title%>
   </div>
+  <div class="domain">
+    <%= f.input_field :domain, placeholder: "-- DOMAIN --", collection: ["Job", "Personal", "Else"] %>
+  </div>
   <div class="btn-form-add">
     <%= f.button :submit, '+', class: "btn-add"%>
   </div>
