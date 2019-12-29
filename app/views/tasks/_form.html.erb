@@ -1,4 +1,10 @@
 <%= simple_form_for ([@list, @task]) do |f|%>
-<%= f.input :content, label: 'Add a Task'%>
-<%= f.button :submit%>
+<div class="form-new">
+  <div class="list-add">
+    <%= f.input_field :content%>
+  </div>
+  <div class="btn-form-add">
+    <%= f.button :submit, '+', class: "btn-add"%>
+  </div>
 <% end %>
+</div>

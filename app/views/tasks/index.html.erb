@@ -1,23 +1,27 @@
 <div class="container">
-  <div class="title">
-    <h1><%= @list.title %></h1>
+  <div class="date text-center">
+    <h1 class="task-title"><%= @list.title %></h1>
     <% unless @list.completed_at.nil? %>
-    <h3>Completed on the: <%= @list.completed_at.strftime("%d of %B, %Y") %></h3>
+    <h3><strong> Completed:   </strong><em><%= @list.completed_at.strftime("%dth of %B, %Y") %></em> </h3>
     <% end %>
   </div>
-  <div>
+
+  <div class="tasks-list">
     <p><% @tasks.each do |task| %></p>
     <% if task.state == 'pending' %>
       <ul>
-        <li class="task"><%= link_to 'Completed?', complete_list_task_path(@list, task), method: :patch %>  <%= task.content %> <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, list_task_path(@list, task), method: :delete %></li>
+        <li class="task"><%= link_to '<i class="far fa-square"></i>'.html_safe, complete_list_task_path(@list, task), method: :patch, style: "color:grey" %>  <%= task.content %>  <%= link_to '<i class="fas fa-times"></i>'.html_safe, list_task_path(@list, task), method: :delete, style: "color:grey", class: "task-delete" %></li>
       </ul>
     <% else %>
       <ul>
-        <li class="task done"><input type="checkbox" checked="checked"> <%= task.content %> <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, list_task_path(@list, task), method: :delete %></li>
+        <li class="task done"><i class="far fa-check-square"></i> <%= task.content %> <%= link_to '<i class="fas fa-times"></i>'.html_safe, list_task_path(@list, task), method: :delete, style: "color:grey", class: "task-delete" %></li>
       </ul>
     <% end %>
     <% end %>
   </div>
+
   <%= render 'form' %>
-  <%= link_to 'Go back to the lists', lists_path %>
+  <div class="archives text-center">
+        <p class="text-btn"><strong><%= link_to 'Back to my lists', lists_path, class: "btn-archives" %></strong></p>
+  </div>
 </div>

@@ -10,3 +10,22 @@
 .done {
   text-decoration: line-through;
 }
+.task-title {
+  border-bottom: solid 10px lightgrey;
+  width: 220px;
+  justify-content: center;
+}
+.tasks-list {
+  width: 40%;
+  margin: auto;
+}
+
+.task-delete {
+  opacity: 0;
+}
+
+.task:hover {
+  & .task-delete {
+    opacity: 1;
+  }
+}
