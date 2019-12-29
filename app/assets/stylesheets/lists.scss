@@ -2,22 +2,79 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .container {
-  width: 56%;
-  margin-top: 36px;
-  box-shadow: 0 0 8px rgba(48,48,48,0.4);
-  padding: 36px;
+  width: 100%;
 }
 
-.list {
-  padding: 8px;
-  text-decoration: none;
-  list-style-type: none;
-  margin-bottom: 48px;
-}
 
 .date {
   margin-bottom: 56px;
 }
-.form-list {
-  justify-content: center;
+.archives:hover {
+  border: solid 3px #5E5B52;
+
 }
+.btn-archives {
+  color: #5E5B52;
+  text-decoration: none;
+}
+.archives {
+  text-align: center;
+  vertical-align: middle;
+  margin: 30px 0;
+}
+.btn-archives:hover {
+  text-decoration: none;
+  color: #5E5B52;
+}
+.text-btn {
+  margin-top: 1rem;
+}
+.form-new {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-add {
+  background: orange;
+  margin-left: 25px;
+  color: white;
+  height: 32px;
+  width: 32px;
+  padding-bottom: 27px;
+  padding-right: 22px;
+}
+.lists {
+  display: grid;
+  margin: 30px 0;
+}
+
+.list {
+  background: lightgray;
+  padding: 10px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.list-title {
+  color: white;
+  margin-bottom: 0
+}
+.list-title:hover {
+  text-decoration: none;
+  border: none;
+}
+
+.list:hover {
+  border: solid 2px gray;
+  & .list-delete {
+    opacity: 1;
+  }
+}
+
+.list-delete {
+  position: absolute;
+  bottom: -7px;
+  right: 10px;
+  opacity: 0;
+}
+
+
