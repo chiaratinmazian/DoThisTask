@@ -7,14 +7,26 @@
   <div class="lists">
     <div class="row">
       <% @lists.each do |list| %>
-          <%= link_to list_tasks_path(list), style: "text-decoration:none" do %>
-            <div class="list-item col-12 col-md-6 col-lg-3">
-              <div class="list text-center rounded">
+        <%= link_to list_tasks_path(list), style: "text-decoration:none" do %>
+          <div class="list-item col-12 col-md-6 col-lg-3">
+            <% if list.domain == "Job" %>
+              <div class="list-green text-center rounded">
                 <p class="list-title"><strong><%= list.title %></strong></p>
                 <p class="list-delete"><%= link_to '<i class="fas fa-times"></i>'.html_safe, list_path(list), method: :delete, data: { confirm: "Are you sure?" }, style: "color:grey" %></p>
               </div>
-            </div>
-          <% end %>
+            <% elsif list.domain == "Personal" %>
+              <div class="list-orange text-center rounded">
+                <p class="list-title"><strong><%= list.title %></strong></p>
+                <p class="list-delete"><%= link_to '<i class="fas fa-times"></i>'.html_safe, list_path(list), method: :delete, data: { confirm: "Are you sure?" }, style: "color:grey" %></p>
+              </div>
+            <% else %>
+              <div class="list-grey text-center rounded">
+                <p class="list-title"><strong><%= list.title %></strong></p>
+                <p class="list-delete"><%= link_to '<i class="fas fa-times"></i>'.html_safe, list_path(list), method: :delete, data: { confirm: "Are you sure?" }, style: "color:grey" %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -3,4 +3,6 @@ class List < ApplicationRecord
   has_many :tasks
 
   validates :title, length: { minimum: 1 }
+
+  DOMAIN = %(Job Personal Else)
 end
