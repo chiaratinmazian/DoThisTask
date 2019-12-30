@@ -10,8 +10,18 @@
 .done {
   text-decoration: line-through;
 }
-.task-title {
+.task-title-grey {
   border-bottom: solid 10px lightgrey;
+  width: 220px;
+  justify-content: center;
+}
+.task-title-yellow {
+  border-bottom: solid 10px #FFEE93;
+  width: 220px;
+  justify-content: center;
+}
+.task-title-green {
+  border-bottom: solid 10px #ADF7B6;
   width: 220px;
   justify-content: center;
 }

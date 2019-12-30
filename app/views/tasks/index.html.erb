@@ -1,6 +1,12 @@
 <div class="container">
   <div class="date text-center">
-    <h1 class="task-title"><%= @list.title %></h1>
+    <% if @list.domain == "Personal" %>
+      <h1 class="task-title-yellow"><%= @list.title %></h1>
+    <% elsif @list.domain == "Job" %>
+      <h1 class="task-title-green"><%= @list.title %></h1>
+    <% else %>
+      <h1 class="task-title-grey"><%= @list.title %></h1>
+    <% end %>
     <% unless @list.completed_at.nil? %>
     <h3><strong> Completed:   </strong><em><%= @list.completed_at.strftime("%dth of %B, %Y") %></em> </h3>
     <% end %>
